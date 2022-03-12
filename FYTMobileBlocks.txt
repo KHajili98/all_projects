@@ -1,0 +1,116 @@
+TODO: 
+
+
+
+1
+LoginBloc
+    loginEvents
+        signIn (https://fyt-local.herokuapp.com/user/api/v1/api-token-auth/  pass: ayxan1234   user: aykhan@admin.az)
+        signOut 
+
+    loginStates
+        signingIn
+        signedIn
+        notSignedIn
+
+
+2
+RegisterBloc
+    registerEvents
+        register (https://fyt-local.herokuapp.com/user/api/v1/accounts/register/) 
+        forgotPassword 
+            step 1  sending verfication code  (https://fyt-local.herokuapp.com/user/api/v1/accounts/password-reset/)
+            step 2  confirming confirmation code (https://fyt-local.herokuapp.com/user/api/v1/accounts/password-reset/validate_token/)
+            step 3  reset password (https://fyt-local.herokuapp.com/user/api/v1/accounts/password-reset/confirm/)
+        recoverPassword
+
+    registerStates
+        registering
+        registered
+        notRegistered
+        activationCodeAccepted
+        passwordIsRecovering
+        passwordWasRecovered
+        passwordWasNotRecovered
+        
+
+
+3
+CategoryBloc
+    categoryEvents    
+        fetchCategories (https://fyt-local.herokuapp.com/user/api/v1/category)
+        resetCategories
+        selectCategory
+    
+    categoryStates    
+        categoriesAreLoading
+        categoriesWereLoaded
+        categoriesWereNotLoaded
+        categoryWasSelected
+
+
+3
+ProjectBloc
+    projectEvents
+        fetchProjects (https://fyt-local.herokuapp.com/project/project-api/    https://fyt-local.herokuapp.com/project/project-api/8/)
+        resetProjects
+        createProjects (https://fyt-local.herokuapp.com/project/project-api/ (post) multipart deyismelidir)
+        selectProjectsByCategoryId (https://fyt-local.herokuapp.com/project/project-api/?categories=kimya,fizika)
+        selectAppliesByProfileTagId (-------------)     
+        fetchApplies
+        submit (https://fyt-local.herokuapp.com/project/project-api/8/submit/)
+
+    projectStates
+        projectsAreLoading
+        projectsWereLoaded
+        projectsWereNotLoaded
+        projectWasCreated
+        projectWasNotCreated
+        appliesAreLoading
+        appliesWereLoaded
+        appliesWereNotLoaded   
+        submitIsLoading
+        submitWasCompleted
+        submitWasNotCompleted    
+
+4
+ProfileTagsBloc
+    profileTagsEvents
+        fetchProfileTags (olmayacaq staticdir)
+
+    profileTagsStates
+        profileTagsAreLoading
+        profileTagsWereLoaded
+        profileTagsWereNotLoaded
+
+
+5
+ProfileBloc
+    profileEvents
+        fetchProfileInformation (https://fyt-local.herokuapp.com/user/api/v1/accounts/profile/)        
+        
+        approveApply 
+        (https://fyt-local.herokuapp.com/project/project-api/8/decision/
+        {
+            "u_id": applicantId,
+            "state": 1
+
+        })
+
+        disapproveApply
+        (https://fyt-local.herokuapp.com/project/project-api/8/decision/
+        {
+            "u_id": applicantId,
+            "state": 2
+
+        })
+
+    profileStates
+        profileInformationIsLoading
+        profileInformationWasLoading
+        profileInformationWasNotLoading         
+        applyWasApproved
+        applyWasNotApproved
+        applyWasDisapproved
+        applyWasNotDisapproved
+
